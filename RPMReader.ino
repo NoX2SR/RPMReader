@@ -9,10 +9,10 @@
 
 #define BoundRate 115200
 
-#define interuptFreq  8000 //Hz
 #define time2SetZero 1000
 
 //Variables for freq meter
+float interuptFreq = 8000.0; //Hz
 bool enteredFirstHigh;
 bool enteredSecondHigh;
 long timer1 = 0;// time between one full rotation (in ms)
@@ -51,7 +51,7 @@ bool tryGetSensorCommand()
 {
   byte receivedBytes[1] {0};
   int i = 0;
-  ;
+  
   while (Serial.available() > 0 && i < 1)
   {
     receivedBytes[i] = Serial.read();
