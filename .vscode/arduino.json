@@ -1,0 +1,5 @@
+{
+  "board": "arduino:avr:uno",
+  "sketch": "RPMReader.ino",
+  "output": "build/vscode"
+}

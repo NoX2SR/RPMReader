@@ -1,4 +1,6 @@
 
+#include <Arduino.h>
+
 #define inPin1 2 //pin connected to optocupler
 #define inPin2 3 //pin connected to read switch
 #define DEREControlPin 8
@@ -20,11 +22,16 @@ long timer2 = 0;
 float freq1 = 0.00;
 float freq2 = 0.00;
 
-byte* toSend = new byte[4];
+byte toSend[4];
 
 char command = '1';
 
 bool interuptEntered = false;
+
+bool tryGetSensorCommand();
+void executeCommand();
+void PrintFreq(float freq);
+void InitInterrupt();
 
 void setup()
 {
@@ -182,4 +189,3 @@ ISR(TIMER2_COMPA_vect)
     freq2 = 0;//if no new pulses from reed switch- tire is still, set Feeq to 0
   }
 }
-

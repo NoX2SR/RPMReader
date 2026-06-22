@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "author": "NoX2SR",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 70,
+      "left": 20,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-clock-generator",
+      "id": "enginePulse",
+      "top": 35,
+      "left": 390,
+      "attrs": { "frequency": "100" }
+    },
+    {
+      "type": "wokwi-clock-generator",
+      "id": "shaftPulse",
+      "top": 145,
+      "left": 390,
+      "attrs": { "frequency": "20" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "debugLed",
+      "top": 285,
+      "left": 390,
+      "attrs": { "color": "blue", "label": "Debug D7 (unused)" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "debugLedResistor",
+      "top": 285,
+      "left": 330,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "txEnable",
+      "top": 390,
+      "left": 390,
+      "attrs": { "color": "red", "label": "RS-485 TX enable" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "txLedResistor",
+      "top": 390,
+      "left": 330,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic",
+      "top": 35,
+      "left": 650,
+      "attrs": {
+        "channelNames": "UART_RX,UART_TX,DE_RE,ENGINE_PULSE,SHAFT_PULSE,DEBUG,D6,D7"
+      }
+    }
+  ],
+  "connections": [
+    [ "enginePulse:CLK", "uno:2", "green", [] ],
+    [ "shaftPulse:CLK", "uno:3", "blue", [] ],
+
+    [ "uno:7", "debugLedResistor:1", "blue", [] ],
+    [ "debugLedResistor:2", "debugLed:A", "blue", [] ],
+    [ "debugLed:C", "uno:GND.2", "black", [] ],
+    [ "uno:8", "txLedResistor:1", "red", [] ],
+    [ "txLedResistor:2", "txEnable:A", "red", [] ],
+    [ "txEnable:C", "uno:GND.2", "black", [] ],
+
+    [ "uno:0", "logic:D0", "green", [] ],
+    [ "uno:1", "logic:D1", "blue", [] ],
+    [ "uno:8", "logic:D2", "red", [] ],
+    [ "uno:2", "logic:D3", "green", [] ],
+    [ "uno:3", "logic:D4", "blue", [] ],
+    [ "uno:7", "logic:D5", "purple", [] ],
+    [ "logic:GND", "uno:GND.3", "black", [] ]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "none",
+    "convertEol": false
+  }
+}
