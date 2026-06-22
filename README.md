@@ -83,3 +83,9 @@ The checked-in `.vscode` configuration points IntelliSense at the installed AVR 
 - The protocol depends on AVR byte order and four-byte IEEE-754 floats.
 - The 125 ms zero timeout limits measurement of very low pulse frequencies.
 - Input conditioning, switch bounce, optocoupler behavior, electrical noise, and motorcycle transient protection require hardware validation.
+
+## License
+
+This project is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE). Noncommercial study, experimentation, modification, and sharing are permitted under its terms. Commercial use requires a separate written license from NoX2SR. See [NOTICE](NOTICE).
+
+Third-party components remain under their own licenses.
